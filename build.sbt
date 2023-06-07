@@ -2,13 +2,11 @@ ThisBuild / version := "0.1.0-SNAPSHOT"
 
 ThisBuild / scalaVersion := "2.13.11"
 
-//appName = "ScalaGDX"
+Compile / resourceDirectory := baseDirectory.value / "assets"
+Compile / unmanagedResourceDirectories += baseDirectory.value / "assets"
+
+
 val gdxVersion = "1.11.0"
-//roboVMVersion = '2.3.19'
-//box2DLightsVersion = '1.5'
-//ashleyVersion = '1.7.4'
-//aiVersion = '1.8.2'
-//gdxControllersVersion = '2.2.1'
 
 
 lazy val root = (project in file("."))

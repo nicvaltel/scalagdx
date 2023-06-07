@@ -6,7 +6,8 @@ object Launcher {
   def main(args: Array[String]): Unit = {
     val config = new Lwjgl3ApplicationConfiguration()
     config.setTitle("Hello, World!")
-    config.setWindowedMode(800,60)
+    config.setWindowedMode(800,600)
+    config.setForegroundFPS(60)
     new Lwjgl3Application(new HelloWorld, config)
   }
 }
