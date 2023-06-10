@@ -1,8 +1,21 @@
 package starfish.aplha.engine
 
-import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.math.Rectangle
 
-class Entity(var texture: Texture, var x: Float, var y: Float, var isVisible: Boolean, var layer: Int) {
-  var rectangle: Rectangle = new Rectangle(x, y, texture.getWidth, texture.getHeight)
+class Entity(val id : EntityId, var rectangle: Rectangle, var isVisible: Boolean, var layer: Int) {
+
+  def setX(x: Float): Unit = rectangle.x = x
+  def setY(y: Float): Unit = rectangle.y = y
+
+  def moveBy(dx:Float, dy:Float):Unit = {
+    setX(rectangle.x + dx)
+    setY(rectangle.y + dy)
+  }
+
+  def act(dt: Float):Unit = {}
+
+  def overlaps(other: Entity): Boolean = this.rectangle.overlaps(other.rectangle)
+
 }
+
+

@@ -7,6 +7,8 @@ Compile / unmanagedResourceDirectories += baseDirectory.value / "assets"
 
 
 val gdxVersion = "1.11.0"
+val catsCoreVersion = "2.6.1"
+val catsEffectVersion = "3.4.10"
 
 
 lazy val root = (project in file("."))
@@ -15,14 +17,26 @@ lazy val root = (project in file("."))
   )
 
 libraryDependencies ++= Seq(
-//  "org.scala-lang" % "scala-library" % "2.13.11",
-  "com.badlogicgames.gdx" % "gdx" % "1.11.0",
-  "com.badlogicgames.gdx" % "gdx-backend-lwjgl3" % "1.11.0",
-  "com.badlogicgames.gdx" % "gdx-platform" %  "1.11.0" classifier "natives-desktop"
+  "com.badlogicgames.gdx" % "gdx" % gdxVersion,
+  "com.badlogicgames.gdx" % "gdx-backend-lwjgl3" % gdxVersion,
+  "com.badlogicgames.gdx" % "gdx-platform" %  gdxVersion classifier "natives-desktop",
+  "org.typelevel" %% "cats-core" % catsCoreVersion,
+  "org.typelevel" %% "cats-effect" % catsEffectVersion
 )
 
-//"org.scala-lang:scala-library:$scalaVersion"
-//api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
-//api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-//api "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
-//api "com.badlogicgames.gdx-controllers:gdx-controllers-desktop:$gdxControllersVersion"
+//libraryDependencies += "org.typelevel" %% "cats-core" % "2.2.0"
+//libraryDependencies += "org.typelevel" %% "cats-effect" % "3.4.10"
+
+//scalacOptions ++= Seq(
+//  "-feature",
+//  "-deprecation",
+//  "-unchecked",
+//  "-language:postfixOps"
+//)
+
+
+//libraryDependencies += "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test
+//
+//
+//libraryDependencies += "com.disneystreaming" %% "weaver-cats" % "0.7.6" % Test
+//testFrameworks += new TestFramework("weaver.framework.CatsEffect")
