@@ -1,18 +1,31 @@
 package starfish.aplha.engine
 
+import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.math.Rectangle
+import com.badlogic.gdx.scenes.scene2d.Actor
 
-class Entity(val id : EntityId, var rectangle: Rectangle, var isVisible: Boolean, var layer: Int) {
+class Entity(val id: EntityId, val renderEntity: RenderEntity, val rectangle: Rectangle, isVisible: Boolean, val layer: Int) extends Actor() {
 
-  def setX(x: Float): Unit = rectangle.x = x
-  def setY(y: Float): Unit = rectangle.y = y
+  setVisible(isVisible)
+  setAllSizesFromRect()
 
-  def moveBy(dx:Float, dy:Float):Unit = {
-    setX(rectangle.x + dx)
-    setY(rectangle.y + dy)
+  private def setAllSizesFromRect():Unit = {
+    setPosition(rectangle.x, rectangle.y)
+    setSize(rectangle.getWidth, rectangle.getHeight)
+    setOrigin(rectangle.getWidth / 2, rectangle.getHeight / 2)
   }
 
-  def act(dt: Float):Unit = {}
+
+  def setTexture(t: Texture): Unit = {
+    renderEntity.textureRegion.setRegion(t)
+    rectangle.setSize(t.getWidth, t.getHeight)
+    setAllSizesFromRect()
+  }
+
+  override def moveBy(x: Float, y: Float): Unit = {
+    super.moveBy(x, y)
+    rectangle.setPosition(getX, getY)
+  }
 
   def overlaps(other: Entity): Boolean = this.rectangle.overlaps(other.rectangle)
 

@@ -1,7 +1,6 @@
-package starfish.aplha.starfish
+package starfish.beta.starfish
 
-
-import starfish.aplha.engine.{Entity, EntityId, World}
+import starfish.beta.engine.{Entity, EntityId, World}
 
 import scala.collection.mutable
 
@@ -14,6 +13,7 @@ class StarfishCollectorWorld(entities: mutable.Map[EntityId, Entity]) extends Wo
     val turtle = entities.getOrElse(StarfishEntityIds.TurtleId, throw new Exception("ERROR: Turtle is not fount in Entities"))
     val starfish = entities.getOrElse(StarfishEntityIds.StarfishId, throw new Exception("ERROR: Starfish is not fount in Entities"))
     turtle.act(dt)
+    starfish.act(dt)
 
     if (!winFlag && turtle.overlaps(starfish)) {
       winFlag = true

@@ -1,9 +1,8 @@
 package starfish.aplha.starfish
 
 import com.badlogic.gdx.Game
-import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.graphics.g2d.{SpriteBatch, TextureRegion}
-import starfish.aplha.engine.{Entity, EntityId, Rendered, World}
+import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import starfish.aplha.engine.{Entity, EntityId, Rendered}
 
 import scala.collection.mutable
 
@@ -12,14 +11,7 @@ class StarfishCollectorAlpha extends Game {
   private var world: StarfishCollectorWorld = _
 
   override def create(): Unit = {
-    val textureMap: mutable.Map[EntityId, Texture] = mutable.Map(
-      StarfishEntityIds.TurtleId -> new Texture("turtle-1.png"),
-      StarfishEntityIds.StarfishId -> new Texture("starfish.png"),
-      StarfishEntityIds.OceanId -> new Texture("water.jpg"),
-      StarfishEntityIds.WinMsgId -> new Texture("you-win.png"))
-
-
-    rendered = new Rendered(new SpriteBatch(), textureMap)
+    rendered = new Rendered(new SpriteBatch())
 
     val entities: mutable.Map[EntityId, Entity] = mutable.Map(
       StarfishEntityIds.TurtleId -> new Turtle(20, 20),
